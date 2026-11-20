@@ -22,10 +22,17 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+
+.vc-shell {
+  height: 100vh;
+  height: 100dvh;
 }
 
 .vc-scroll {
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }

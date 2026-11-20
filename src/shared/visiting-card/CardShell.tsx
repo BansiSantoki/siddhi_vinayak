@@ -6,7 +6,7 @@ import { BACKGROUND_URL } from './contact'
 /** Full-screen on phones; a centred phone-sized card on tablet and desktop. */
 export function CardShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-[#dfe9f5] font-sans">
+    <div className="vc-shell relative flex w-full items-center justify-center overflow-hidden bg-[#dfe9f5] font-sans">
       {/* Soft, blurred echo of the scene behind the card on wide screens */}
       <div
         aria-hidden
