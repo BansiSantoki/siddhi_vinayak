@@ -4,12 +4,12 @@ import React from 'react'
 export function LocationPin() {
   return (
     <>
-      {/* Glow pulse on the floor where the pin points */}
-      <span className="vc-pin-ring absolute left-1/2 top-[94.4%] aspect-[3/1] w-[16%] rounded-[50%] border-2 border-brand-red/50 bg-brand-red/10" />
-      <span className="vc-pin-shadow absolute left-1/2 top-[94.6%] aspect-[4/1] w-[9%] rounded-[50%] bg-[#7a0a0f] blur-[3px]" />
+      {/* Glow on the floor where the pin points */}
+      <span className="absolute left-1/2 top-[94.4%] aspect-[3/1] w-[16%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-brand-red/50 bg-brand-red/10" />
+      <span className="absolute left-1/2 top-[94.6%] aspect-[4/1] w-[9%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[#7a0a0f] blur-[3px]" />
       <span className="absolute left-1/2 top-[94.4%] aspect-square w-[22%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,220,170,0.8),transparent_60%)] mix-blend-screen" />
 
-      <div className="vc-pin absolute left-1/2 top-[94.2%] w-[12%] drop-shadow-[0_10px_14px_rgba(140,10,16,0.35)]">
+      <div className="absolute left-1/2 top-[94.2%] w-[12%] -translate-x-1/2 -translate-y-full drop-shadow-[0_10px_14px_rgba(140,10,16,0.35)]">
         <svg viewBox="0 0 100 140" className="block w-full">
           <defs>
             <radialGradient id="vc-pin-body" cx="35%" cy="28%" r="80%">

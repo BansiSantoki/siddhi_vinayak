@@ -25,7 +25,7 @@ export default function VisitingCard(props: Props) {
 
   return (
     <CardShell>
-      <SceneBackground scrollRef={scrollRef} showPin />
+      <SceneBackground showPin />
 
       <div ref={scrollRef} className="vc-scroll relative z-10 h-full overflow-y-auto overflow-x-hidden">
         <div className="flex min-h-full flex-col px-4 pb-36 pt-9 sm:px-5">

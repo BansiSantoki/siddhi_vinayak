@@ -33,56 +33,6 @@ body {
   display: none;
 }
 
-/* ---------- Background life ---------- */
-@keyframes vc-cloud-drift {
-  from { transform: translateX(-30%); }
-  to { transform: translateX(130%); }
-}
-@keyframes vc-sun-pulse {
-  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.12); }
-}
-@keyframes vc-rays {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-@keyframes vc-particle {
-  0% { transform: translate3d(0, 0, 0); opacity: 0; }
-  15% { opacity: 0.9; }
-  85% { opacity: 0.7; }
-  100% { transform: translate3d(var(--dx, 20px), -140px, 0); opacity: 0; }
-}
-@keyframes vc-sway {
-  0%, 100% { transform: rotate(-0.6deg); }
-  50% { transform: rotate(0.6deg); }
-}
-@keyframes vc-breathe {
-  0%, 100% { transform: scale(1.04); }
-  50% { transform: scale(1.075); }
-}
-@keyframes vc-pin-float {
-  0%, 100% { transform: translate(-50%, -100%) translateY(0); }
-  50% { transform: translate(-50%, -100%) translateY(-7px); }
-}
-@keyframes vc-pin-pulse {
-  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.7; }
-  100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
-}
-@keyframes vc-shadow-breathe {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.45; }
-  50% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
-}
-
-.vc-cloud { animation: vc-cloud-drift linear infinite; }
-.vc-sun { animation: vc-sun-pulse 6s ease-in-out infinite; }
-.vc-rays { animation: vc-rays 90s linear infinite; }
-.vc-particle { animation: vc-particle linear infinite; }
-.vc-sway { animation: vc-sway 5s ease-in-out infinite; transform-origin: 50% 100%; }
-.vc-breathe { animation: vc-breathe 28s ease-in-out infinite; transform-origin: 50% 60%; }
-.vc-pin { animation: vc-pin-float 3.2s ease-in-out infinite; }
-.vc-pin-ring { animation: vc-pin-pulse 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite; }
-.vc-pin-shadow { animation: vc-shadow-breathe 3.2s ease-in-out infinite; }
-
 /* ---------- Card shine (hover-capable devices only) ---------- */
 .vc-shine {
   transform: translateX(-120%) skewX(-18deg);
@@ -93,11 +43,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .vc-cloud, .vc-sun, .vc-rays, .vc-particle, .vc-sway, .vc-breathe,
-  .vc-pin, .vc-pin-ring, .vc-pin-shadow {
-    animation: none !important;
-  }
-  .vc-pin { transform: translate(-50%, -100%); }
   .vc-shine { transition: none; }
   .vc-scroll { scroll-behavior: auto; }
 }
