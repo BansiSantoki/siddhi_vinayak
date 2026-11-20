@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Home, Mail, MapPin, Phone, UserRoundPlus, Check } from 'lucide-react'
 
 import { SceneBackground } from '../shared/visiting-card/SceneBackground'
@@ -13,7 +13,6 @@ type Props = Partial<typeof args> & { onOpenServices?: () => void }
 export default function VisitingCard(props: Props) {
   const { state, onOpenServices } = { ...args, ...props }
   const scrollRef = useRef<HTMLDivElement>(null)
-  const reduce = useReducedMotion()
   const [saved, setSaved] = useState(state === 'saved')
 
   useEffect(() => setSaved(state === 'saved'), [state])
@@ -34,13 +33,9 @@ export default function VisitingCard(props: Props) {
           {/* House stays visible between header and cards */}
           <div className="h-[max(9rem,calc(49vh-10.5rem))] shrink-0 sm:h-[max(9rem,calc(46vh-10.5rem))]" aria-hidden />
 
-          <motion.ul
-            className="flex flex-col gap-3.5"
-            initial={reduce ? false : 'hidden'}
-            animate={reduce ? undefined : 'show'}
-            variants={{ show: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } } }}
-          >
+          <ul className="flex flex-col gap-3.5">
             <ContactCard
+              entranceDelay={0.08}
               tone="red"
               icon={Phone}
               title="Contact Us Now"
@@ -49,6 +44,7 @@ export default function VisitingCard(props: Props) {
               descriptionClassName="!text-[clamp(15px,4.1cqw,17.5px)] tracking-[0.01em]"
             />
             <ContactCard
+              entranceDelay={0.2}
               tone="navy"
               icon={Home}
               title="Our Real Estate Services"
@@ -56,6 +52,7 @@ export default function VisitingCard(props: Props) {
               onClick={onOpenServices}
             />
             <ContactCard
+              entranceDelay={0.32}
               tone="red"
               icon={Mail}
               title="Email Us"
@@ -64,6 +61,7 @@ export default function VisitingCard(props: Props) {
               descriptionClassName="break-words"
             />
             <ContactCard
+              entranceDelay={0.44}
               tone="navy"
               icon={MapPin}
               title="Our Location"
@@ -72,6 +70,7 @@ export default function VisitingCard(props: Props) {
               external
             />
             <ContactCard
+              entranceDelay={0.56}
               tone="red"
               icon={UserRoundPlus}
               title="Save Contact"
@@ -81,7 +80,7 @@ export default function VisitingCard(props: Props) {
                 setSaved(true)
               }}
             />
-          </motion.ul>
+          </ul>
         </div>
       </div>
 

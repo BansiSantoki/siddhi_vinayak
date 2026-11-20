@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion, type Variants } from 'framer-motion'
+import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ChevronRight, type LucideIcon } from 'lucide-react'
 
 type Props = {
@@ -11,17 +11,35 @@ type Props = {
   external?: boolean
   onClick?: () => void
   descriptionClassName?: string
+  entranceDelay?: number
 }
 
 /** One row of the visiting card: glossy icon tile, divider, text, red arrow. */
-export function ContactCard({ tone, icon: Icon, title, description, href, external, onClick, descriptionClassName = '' }: Props) {
+export function ContactCard({
+  tone,
+  icon: Icon,
+  title,
+  description,
+  href,
+  external,
+  onClick,
+  descriptionClassName = '',
+  entranceDelay = 0,
+}: Props) {
+  const reduce = useReducedMotion()
   const Tag = href ? motion.a : motion.button
   const linkProps = href
     ? { href, ...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {}) }
     : { type: 'button' as const }
 
   return (
-    <motion.li variants={entrance} className="list-none">
+    <motion.li
+      custom={entranceDelay}
+      initial={reduce ? false : 'hidden'}
+      animate={reduce ? undefined : 'show'}
+      variants={entrance}
+      className="list-none"
+    >
       <Tag
         {...linkProps}
         onClick={onClick}
@@ -71,14 +89,14 @@ export function ContactCard({ tone, icon: Icon, title, description, href, extern
 const EASE = [0.23, 1, 0.32, 1] as const
 
 const entrance: Variants = {
-  hidden: { opacity: 0, y: 28, scale: 0.96, filter: 'blur(8px)' },
-  show: {
+  hidden: { opacity: 0, y: 32, scale: 0.94, filter: 'blur(6px)' },
+  show: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
     scale: 1,
     filter: 'blur(0px)',
-    transition: { duration: 0.48, ease: EASE },
-  },
+    transition: { duration: 0.58, delay, ease: EASE },
+  }),
 }
 
 const card: Variants = {
